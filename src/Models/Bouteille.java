@@ -1,4 +1,6 @@
-package app;
+package Models;
+
+import java.text.DecimalFormat; 
 
 public class Bouteille {
 
@@ -20,6 +22,13 @@ public class Bouteille {
         this.enVerre = enVerre;
     }
 
+    // Méthodes 
+
+    public double prixFormatee(){
+        DecimalFormat prixFormate = new DecimalFormat("0.00"); 
+        return Double.parseDouble(prixFormate.format(prix));
+    }
+
     // Getters
 
     public String getNom() {
@@ -38,8 +47,12 @@ public class Bouteille {
         return remplissage;
     }
 
-    public boolean isEnVerre() {
+    public boolean getEnVerre() {
         return enVerre;
+    }
+
+    public void setRemplissage(double remplissage) {
+        this.remplissage = remplissage;
     }
 
     // toString
@@ -61,7 +74,7 @@ public class Bouteille {
             videOuPlein = "vide";
         }
 
-        String affichage = "Bouteille '" + nom + "' de " + contenance + " " + materiel + " à " + prix + " Frs - " + videOuPlein;
+        String affichage = "Bouteille '" + nom + "' de " + contenance + "L " + materiel + " à " + prixFormatee() + " Frs - " + videOuPlein;
         return affichage;
     }
 
